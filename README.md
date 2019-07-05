@@ -57,7 +57,7 @@
   - `else{digitalWrite(8, LOW);}`
   - `if(bitRead(counter, 2) == 1){digitalWrite(11, HIGH);}`
   - `else{digitalWrite(11, LOW);}`
-- Replace 'counter' with mapPotentiometer (Here's what you can paste into your code:)
+- Replace 'counter' with 'mapPotentiometer' (Here's what you can paste into your code:)
   - `pinMode(5, OUTPUT); //LED 1`
   - `pinMode(8, OUTPUT); //LED 2`
   - `pinMode(11, OUTPUT); //LED 3`
