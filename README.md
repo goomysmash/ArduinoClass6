@@ -13,9 +13,9 @@
 ### 2. Use the map function to change the input range
 - Comment out the previous print statement
 - New code lines:
-- `int mapPotentiometer = 0;`
-- `mapPotentiometer = map(analogRead(A5), 20, 1010, 0, 7);`
-- `Serial.println(mapPotentiometer);`
+  - `int mapPotentiometer = 0;`
+  - `mapPotentiometer = map(analogRead(A5), 20, 1010, 0, 7);`
+  - `Serial.println(mapPotentiometer);`
 - (Upload, watch serial monitor and move potentiometer)
 - Notice how the serial monitor prints out a number between 0 and 7
 ### 3. What happens if our range changes?
@@ -38,4 +38,47 @@
   - `mapPotentiometer = map(potInput, 100, 800, 0, 7);`
 - (Upload, watch serial monitor and move potentiometer)
 - Notice how it only goes from 0 to 7 now, with a little leeway inbetween
-  
+### 5. Combine this with code from Class 4 to represent the potentiometer input with 3 LEDs
+- Copied from Class 4:
+  - `pinMode(5, OUTPUT); //LED 1`
+  - `pinMode(8, OUTPUT); //LED 2`
+  - `pinMode(11, OUTPUT); //LED 3`
+  - `pinMode(4, OUTPUT); //Ground for LED 1`
+  - `pinMode(7, OUTPUT); //Ground for LED 2`
+  - `pinMode(10, OUTPUT); //Ground for LED 3`
+  - `digitalWrite(4, LOW); //Ground for LED 1 gets set low`
+  - `digitalWrite(7, LOW); //Ground for LED 2 gets set low`
+  - `digitalWrite(10, LOW); //Ground for LED 3 gets set low`
+  - `Serial.print("counter: ");`
+  - `Serial.println(counter, BIN);`
+  - `if(bitRead(counter, 0) == 1){digitalWrite(5, HIGH);}`
+  - `else{digitalWrite(5, LOW);}`
+  - `if(bitRead(counter, 1) == 1){digitalWrite(8, HIGH);}`
+  - `else{digitalWrite(8, LOW);}`
+  - `if(bitRead(counter, 2) == 1){digitalWrite(11, HIGH);}`
+  - `else{digitalWrite(11, LOW);}`
+- Replace 'counter' with mapPotentiometer (Here's what you can paste into your code:)
+  - `pinMode(5, OUTPUT); //LED 1`
+  - `pinMode(8, OUTPUT); //LED 2`
+  - `pinMode(11, OUTPUT); //LED 3`
+  - `pinMode(4, OUTPUT); //Ground for LED 1`
+  - `pinMode(7, OUTPUT); //Ground for LED 2`
+  - `pinMode(10, OUTPUT); //Ground for LED 3`
+  - `digitalWrite(4, LOW); //Ground for LED 1 gets set low`
+  - `digitalWrite(7, LOW); //Ground for LED 2 gets set low`
+  - `digitalWrite(10, LOW); //Ground for LED 3 gets set low`
+  - `Serial.print("mapPotentiometer: ");`
+  - `Serial.println(mapPotentiometer, BIN);`
+  - `if(bitRead(mapPotentiometer, 0) == 1){digitalWrite(5, HIGH);}`
+  - `else{digitalWrite(5, LOW);}`
+  - `if(bitRead(mapPotentiometer, 1) == 1){digitalWrite(8, HIGH);}`
+  - `else{digitalWrite(8, LOW);}`
+  - `if(bitRead(mapPotentiometer, 2) == 1){digitalWrite(11, HIGH);}`
+  - `else{digitalWrite(11, LOW);}`
+- Comment out this line:
+  - `Serial.println(mapPotentiometer);`
+- (Upload, watch serial monitor, move potentiometer, and watch LEDs)
+- Notice how you can set any number between 0 and 7 with just the slider and 3 LEDs
+
+### Lessons learned:
+- The map and contstrain functions can be useful when dealing with analog inputs
