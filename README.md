@@ -10,7 +10,7 @@
   - `if (analogRead(A4) > 100){Serial.println("high");}`
   - `else{Serial.println("low");}`
 - (Upload, watch serial monitor and move potentiometer)
-
+- Notice how the potentiometer essentially acts as a digital input, either on or off past a certian point
 ### 2. 
 - ``
 - ``
